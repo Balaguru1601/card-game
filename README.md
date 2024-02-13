@@ -24,7 +24,6 @@ Rules –
 -   View leaderboard
 -   Login/Register to play
 -   Update score and leaderboard after win
--   Update the leaderboard at regular intervals - 30s
 
 ## Run Locally
 
