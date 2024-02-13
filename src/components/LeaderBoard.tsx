@@ -43,17 +43,17 @@ function LeaderBoard() {
 						} = data.data;
 						dispatch(setUser({ username, score }));
 					}
-					dispatch(reset());
+					setTimeout(() => {
+						dispatch(reset());
+					}, 500);
 					getLeaderBoard();
 				});
 		}
 		t = setInterval(() => {
-			console.log("timeout set");
 			getLeaderBoard();
-		}, 15000);
+		}, 30000);
 		() => {
 			clearInterval(t);
-			console.log("timeout cleared!");
 		};
 	}, [gameOver, gameWon]);
 

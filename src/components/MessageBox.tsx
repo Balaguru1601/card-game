@@ -9,7 +9,6 @@ function MessageBox() {
 	useEffect(() => {
 		const t = setTimeout(() => {
 			dispatch(resetMessage());
-			console.log("run");
 		}, 2000);
 
 		() => clearTimeout(t);

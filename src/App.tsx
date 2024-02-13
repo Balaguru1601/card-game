@@ -1,19 +1,15 @@
-// import { useState } from 'react'
 import { RootState, store } from "../store/store";
 import "./App.css";
 import { Provider, useDispatch, useSelector } from "react-redux";
-// import Card from "./components/Card";
 import CardList from "./components/CardList";
 import Defusers from "./components/Defusers";
-import MessageBox from "./components/MessageBox";
 import Login from "./components/Login";
 import { resetUser } from "../store/userSlice";
 import { setCards } from "../store/cardSlice";
 import LeaderBoard from "./components/LeaderBoard";
+import Modal from "./components/Modal";
 
 function App() {
-	//   const [count, setCount] = useState(0)
-
 	const dispatch = useDispatch();
 	const { username } = useSelector((state: RootState) => state.user);
 
@@ -75,8 +71,8 @@ function App() {
 				) : (
 					<Login />
 				)}
-				<div className="absolute top-16 left-[50%] translate-x-[-50%] z-10">
-					<MessageBox />
+				<div>
+					<Modal />
 				</div>
 			</main>
 		</Provider>

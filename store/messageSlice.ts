@@ -4,11 +4,14 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface MsgState {
 	message: string;
 	success: boolean;
+	name?: "cat" | "bomb" | "shuffle" | "defuse";
+	index: number | null;
 }
 
 const initialState: MsgState = {
 	message: "",
 	success: true,
+	index: null,
 };
 
 export const messageSlice = createSlice({

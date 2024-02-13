@@ -1,7 +1,3 @@
-// type Props = {}
-
-// import { useEffect } from "react";
-// import { setCards } from "../../store/cardSlice";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import Card from "./Card";
@@ -9,9 +5,9 @@ import { useState } from "react";
 
 function CardList() {
 	const { cards } = useSelector((state: RootState) => state.card);
-	const [disableOthers, setDisableOthers] = useState(false);
+	const [disableOthers, setDisableOthers] = useState<number | null>(null);
 
-	function disableSetter(val: boolean) {
+	function disableSetter(val: number | null) {
 		setDisableOthers(val);
 	}
 
