@@ -1,4 +1,5 @@
 import axios from "axios";
 
-export default axios.create({ baseURL: "http://localhost:8080" });
-export const baseUrl = "http://localhost:8080";
+export default axios.create({
+	baseURL: "https://card-game-server-production-1868.up.railway.app",
+});
