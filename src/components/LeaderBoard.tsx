@@ -5,13 +5,12 @@ import { RootState } from "../../store/store";
 import { setUser } from "../../store/userSlice";
 import { reset } from "../../store/cardSlice";
 
-let t = 0;
 function LeaderBoard() {
 	const [data, setData] = useState<{ username: string; score: string }[]>([]);
 	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 
-	const { gameOver, gameWon } = useSelector((state: RootState) => state.card);
+	const { gameWon } = useSelector((state: RootState) => state.card);
 	const { username, score } = useSelector((state: RootState) => state.user);
 
 	async function getLeaderBoard() {
@@ -45,17 +44,11 @@ function LeaderBoard() {
 					}
 					setTimeout(() => {
 						dispatch(reset());
-					}, 500);
+					}, 700);
 					getLeaderBoard();
 				});
 		}
-		t = setInterval(() => {
-			getLeaderBoard();
-		}, 30000);
-		() => {
-			clearInterval(t);
-		};
-	}, [gameOver, gameWon]);
+	}, [gameWon]);
 
 	useEffect(() => {
 		getLeaderBoard();
@@ -63,7 +56,33 @@ function LeaderBoard() {
 
 	return (
 		<div className="px-2 md:px-4 bg-black">
-			<p className="text-2xl mt-8 font-semibold text-white mb-4 text-center">Leaderboard</p>
+			<div className="flex justify-between mt-8 mb-4 items-center flex-wrap">
+				<p className="text-2xl font-semibold text-white text-center inline-block ">
+					Leaderboard
+				</p>
+				<button
+					title="Refresh"
+					className="text-white hover:text-gray-400"
+					onClick={getLeaderBoard}
+					disabled={loading}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						id="refresh"
+						fill="white"
+						width={32}
+						height={32}
+					>
+						<g data-name="Layer 2">
+							<path
+								d="M20.3 13.43a1 1 0 0 0-1.25.65A7.14 7.14 0 0 1 12.18 19 7.1 7.1 0 0 1 5 12a7.1 7.1 0 0 1 7.18-7 7.26 7.26 0 0 1 4.65 1.67l-2.17-.36a1 1 0 0 0-1.15.83 1 1 0 0 0 .83 1.15l4.24.7h.17a1 1 0 0 0 .34-.06.33.33 0 0 0 .1-.06.78.78 0 0 0 .2-.11l.09-.11c0-.05.09-.09.13-.15s0-.1.05-.14a1.34 1.34 0 0 0 .07-.18l.75-4a1 1 0 0 0-2-.38l-.27 1.45A9.21 9.21 0 0 0 12.18 3 9.1 9.1 0 0 0 3 12a9.1 9.1 0 0 0 9.18 9A9.12 9.12 0 0 0 21 14.68a1 1 0 0 0-.7-1.25z"
+								data-name="refresh"
+							></path>
+						</g>
+					</svg>
+				</button>
+			</div>
 			{loading ? (
 				"loading.."
 			) : (
