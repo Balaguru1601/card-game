@@ -10,7 +10,7 @@ function MessageBox() {
 		const t = setTimeout(() => {
 			dispatch(resetMessage());
 			console.log("run");
-		}, 3000);
+		}, 2000);
 
 		() => clearTimeout(t);
 	}, [message.length, dispatch]);

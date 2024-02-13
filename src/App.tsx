@@ -59,7 +59,16 @@ function App() {
 									<Defusers />
 									<CardList />
 								</div>
-							) : null}
+							) : (
+								<div className="text-center pt-16">
+									<button
+										onClick={() => dispatch(setCards())}
+										className="px-3 py-2 border rounded text-2xl bg-black text-gray-200 hover:bg-gray-700"
+									>
+										Start game
+									</button>
+								</div>
+							)}
 							<LeaderBoard />
 						</main>
 					</>

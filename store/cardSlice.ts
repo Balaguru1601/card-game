@@ -23,7 +23,6 @@ const initialState: {
 const cardsNames: ("cat" | "bomb" | "shuffle" | "defuse")[] = ["cat", "bomb", "defuse", "shuffle"];
 
 function getRandomCard() {
-	console.log(Math.floor(Math.random() * (3 + 1)));
 	return { card: cardsNames[Math.floor(Math.random() * 4)], open: false };
 }
 
@@ -93,15 +92,9 @@ cardMiddleware.startListening({
 		listenerAPI.cancelActiveListeners();
 		const { card: data, user } = listenerAPI.getState() as RootState;
 		try {
-			if (action.type === "card/reset")
+			if (action.type === "card/reset" || data.gameOver || data.gameWon)
 				await axios.post("/save-game", { username: user.username, data: null });
 			else await axios.post("/save-game", { username: user.username, data });
-			if (data.gameWon) {
-				await axios.post("/set-score", {
-					username: user.username,
-					score: String(+user.score + 1),
-				});
-			}
 		} catch (error) {
 			console.log(error);
 		}

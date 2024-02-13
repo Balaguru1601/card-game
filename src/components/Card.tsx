@@ -67,7 +67,7 @@ function Card(props: Props) {
 						if (props.name === "shuffle") dispatch(setCards());
 						else dispatch(setOpen(props.index));
 						props.setDisableOthers(false);
-					}, 1000);
+					}, 1500);
 					return;
 				}}
 			>
