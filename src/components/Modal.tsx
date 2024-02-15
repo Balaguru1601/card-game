@@ -22,13 +22,13 @@ function Modal() {
 
 	return (
 		<div
-			className={`absolute w-[100vw] h-[100vh] top-0 left-0 z-20 bg-[rgba(255,255,255,0.3)] ${
+			className={`absolute w-full h-full top-0 left-0 z-20 bg-[rgba(255,255,255,0.3)] ${
 				message.length > 0 ? "" : "hidden"
 			}`}
 		>
 			<div
 				tabIndex={-1}
-				className="opacity-100 fixed justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+				className="opacity-100 fixed justify-center items-center w-full md:inset-0 max-h-full"
 				// onBlur={()}
 			>
 				<div className="relative p-4 top-[50vh] -translate-x-1/2 -translate-y-1/2 left-[50vw] w-full max-w-2xl max-h-full">
